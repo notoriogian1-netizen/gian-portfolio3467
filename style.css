@@ -1,0 +1,187 @@
+/* ====== Base reset and variables ====== */
+:root {
+  --bg: #0f172a;         /* slate-900 */
+  --fg: #e5e7eb;         /* gray-200 */
+  --muted: #94a3b8;      /* slate-400 */
+  --accent: #22c55e;     /* green-500 */
+  --accent-dark: #16a34a;/* green-600 */
+  --card: #111827;       /* gray-900 */
+  --border: #1f2937;     /* gray-800 */
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+/* ====== Layout ====== */
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+main,
+section {
+  width: min(900px, 92vw);
+  margin: 1.5rem auto;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.25rem 1.4rem;
+  backdrop-filter: saturate(1.2) blur(6px);
+}
+
+/* Allow standalone headings outside sections to breathe */
+h1 + ul,
+h1 + p,
+h1 + a {
+  width: min(900px, 92vw);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ====== Header ====== */
+header {
+  width: 100%;
+  padding: 3.5rem 1.5rem 2rem;
+  background:
+    radial-gradient(1200px 500px at 10% -50%, rgba(34,197,94,0.25) 0%, rgba(34,197,94,0.05) 30%, transparent 60%),
+    radial-gradient(1000px 400px at 90% -40%, rgba(59,130,246,0.25) 0%, rgba(59,130,246,0.05) 35%, transparent 65%),
+    linear-gradient(180deg, #0b1223, #0f172a 40%, #0f172a);
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: 0.02em;
+  color: #ffffff;
+}
+
+header p {
+  margin: 0.35rem 0;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* ====== Typography ====== */
+h1 {
+  font-size: clamp(1.35rem, 3.5vw, 1.75rem);
+  margin: 0 0 0.75rem;
+  color: #ffffff;
+}
+
+p { margin: 0.25rem 0; }
+
+ul, ol {
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+}
+
+li {
+  padding: 0.25rem 0;
+  color: #cbd5e1;
+}
+
+/* ====== Links ====== */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 160ms ease, opacity 160ms ease, transform 160ms ease;
+}
+
+a:hover { color: var(--accent-dark); }
+
+h1 a {
+  display: inline-block;
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.75rem;
+  border-radius: 12px;
+  background: var(--card);
+}
+
+h1 a:hover {
+  transform: translateY(-1px);
+}
+
+/* ====== Media / Images ====== */
+section img {
+  display: block;
+  width: 100%;
+  max-width: 620px;
+  height: auto;
+  margin: 0.5rem auto;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+
+/* ====== Contact block ====== */
+section a + br + a,
+section a + br {
+  display: none; /* Clean up stray <br> usage visually */
+}
+
+section a {
+  display: inline-block;
+  margin-right: 0.75rem;
+  margin-top: 0.5rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+
+section a:hover {
+  background: #0d1324;
+}
+
+/* ====== Footer ====== */
+footer {
+  width: 100%;
+  padding: 1rem 1.5rem 2rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* ====== Utilities ====== */
+.section--compact {
+  padding: 0.9rem 1.1rem;
+}
+
+.muted { color: var(--muted); }
+
+/* ====== Responsive tweaks ====== */
+@media (max-width: 640px) {
+  section {
+    padding: 1rem;
+    border-radius: 14px;
+  }
+
+  ul, ol { padding-left: 1rem; }
+
+  h1 { font-size: 1.35rem; }
+}
+
+/* ====== Nice subtle focus states ====== */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* ====== Optional: improve list aesthetics ====== */
+ul li::marker { color: var(--accent-dark); }
+ol li::marker { color: var(--accent); }
